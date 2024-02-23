@@ -1,0 +1,18 @@
+def isValid(s):
+    stack = []
+    bracket_dict = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in bracket_dict.values():
+            stack.append(char)
+        elif char in bracket_dict.keys():
+            if not stack or stack.pop() != bracket_dict[char]:
+                return False
+        else:
+            return False
+    
+    return not stack
+
+print(isValid("()"))       
+print(isValid("()[]{}"))  
+print(isValid("(]"))       
